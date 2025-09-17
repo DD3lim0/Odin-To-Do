@@ -1,3 +1,5 @@
+import {Todo} from "./todo";
+
 class Project{
 
     constructor(name) {
@@ -14,8 +16,11 @@ class Project{
         this.name = string;
     }
 
-    addTodoItem(Todo){
-        this.arrTodos.push(Todo);
+    addTodoItem(title, description, dueDate ,priority){
+
+        let todo = new Todo(title, description, dueDate ,priority);
+
+        this.arrTodos.push(todo);
     }
 
     deleteTodoItem(id){
