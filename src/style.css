@@ -275,6 +275,20 @@ label{
     padding-left: 15px;
 }
 
+.todoStart{
+   width: 200px;
+}
+
+.rightPortion{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    text-align: center;
+}
+.todoContainer{
+    color: rgb(149,163,183);
+}
+
 .overlayContainer{
     width: 500px;
     height: 450px;
@@ -351,4 +365,94 @@ label{
 
 #dueDate{
     margin-right: 40px;
+}
+
+.TodoCard{
+    height: 60px;
+    width: 95%;
+    border: solid rgb(31,41,54) 1px;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.additionalDetailContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.todoName{
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+
+#completed{
+    width: 20px;
+}
+
+
+.todoDetailContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 8px;
+    gap:10px;
+}
+
+
+.additionalDetailContainer{
+    font-size: 12px;
+    display: flex;
+    gap: 20px;
+}
+
+.priorityUI,.dueUI, .noteUI{
+    padding: 5px;
+    border: solid rgb(31,41,54) 1px;
+    text-align:center;
+    border-radius: 12px;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.priorityUI{
+    color: rgb(253,157,42);
+    border: solid rgb(74,54,23) 1px;
+}
+
+.todoActions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.todoActions button{
+    border: solid rgb(31,41,54) 2px;
+    color: rgb(31,41,54);
+    background-color: transparent;
+    height: 40px;
+    width: 50px;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+
+.remove:hover, .edit:hover {
+    cursor: pointer;
+}
+.remove:hover{
+    border:solid #e54d4d 1px;
+    color: #E54D4DFF;
+}
+
+.edit:hover{
+    border:solid rgb(55,114,225) 1px;
+    color: rgb(55,114,225);
 }

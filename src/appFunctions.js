@@ -1,4 +1,4 @@
-import {projectContainer} from "./domElement";
+import {descriptionElement, dueDateElement, priorityElement, projectContainer, titleElement, projectHeaderTodoCount,projectHeaderName, todoCardContainer} from "./domElement";
 import {Project} from "./project";
 import {Todo} from "./todo";
 import {applicationProjectsArr} from "./main";
@@ -103,7 +103,7 @@ export function  removeActiveClassFromProjects(){
 }
 
 
-export function findProjectToRename (id){
+export function findProject (id){
     return applicationProjectsArr.find(el=> el.id === id);
 
 }
@@ -149,5 +149,38 @@ export function getProjectArrFromLocalStorage(){
 
 
 export function clearTodoFormInputFields(){
+titleElement.value = "";
+descriptionElement.value ="";
+dueDateElement.value ="";
+priorityElement.value ="";
+}
 
+function updateHeaderWithProjectInfo(activeProject){
+    if(activeProject.id === getIDOfActiveProject()){
+        projectHeaderName.innerHTML = activeProject.name;
+        projectHeaderTodoCount.innerText = activeProject.arrTodos.length;
+    }
+}
+
+export function addTodoCard(project){
+
+}
+
+export function displayProjectTodoCards(project){
+    if(project.arrTodos.length > 0){
+        todoCardContainer.innerText = "";
+
+        project.arrTodos.forEach(todo => {
+            addTodoCard(todo);
+            console.log("hello")
+        })
+
+    } else{
+       todoCardContainer.innerText = "No todos in this project yet."
+    }
+
+}
+export function updateHeaderUI(activeProject){
+    updateHeaderWithProjectInfo(activeProject);
+    displayProjectTodoCards(activeProject);
 }

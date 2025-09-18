@@ -5,7 +5,12 @@ import {
     projectContainer,
     filterSearch,
     todoBtn,
-    cancelBtn, saveBtn
+    cancelBtn,
+    saveBtn,
+    titleElement,
+    descriptionElement,
+    dueDateElement,
+    priorityElement
 } from "./domElement.js";
 import './style.css'
 import {
@@ -15,13 +20,14 @@ import {
     saveToLocalStroage,
     getIDOfActiveProject,
     removeActiveClassFromProjects,
-    findProjectToRename,
+    findProject,
     promptToRenameProject,
     displayProjectsInUI,
     displayFilteredProjectsInUI,
     toggleOverlay,
     getProjectArrFromLocalStorage,
-    clearTodoFormInputFields
+    clearTodoFormInputFields,
+    updateHeaderUI
 } from "./appFunctions";
 import {Project} from "./project";
 
@@ -38,20 +44,30 @@ addProjectBtn.addEventListener('click',() => {
     }
 
     displayProjectsInUI();
+    updateHeaderUI(project);
 });
 
 projectContainer.addEventListener('click', (e)=>{
     removeActiveClassFromProjects();
-console.log(e.target);
-    if( e.target.classList.contains("selectableProject"))
-        e.target.classList.add('active');
+
+    if( e.target.classList.contains("selectableProject")) {
+
+         e.target.classList.add('active');
+         let selectedElement = document.querySelector('.active');
+         console.log(selectedElement);
+        let id = selectedElement.dataset.id;
+        console.log(id);
+        let project = findProject(id);
+        console.log(project);
+        updateHeaderUI(project);
+    }
 
 })
 
 
 renameBtn.addEventListener('click',()=>{
     let projectID = getIDOfActiveProject();
-    let newName  = promptToRenameProject(findProjectToRename(projectID));
+    let newName  = promptToRenameProject(findProject(projectID));
 
     applicationProjectsArr.find(el => el.id = projectID).name = newName;
 
@@ -94,10 +110,6 @@ todoBtn.addEventListener('click', ()=>{
 cancelBtn.addEventListener('click',toggleOverlay);
 
 saveBtn.addEventListener('click', ()=>{
-        let titleElement = document.querySelector('#title');
-        let descriptionElement = document.querySelector('#description');
-        let dueDateElement = document.querySelector('#dueDate');
-        let priorityElement = document.querySelector('#priority');
 
         if(titleElement.value.length > 0 && dueDateElement.value.length > 0 && priorityElement.value.length > 0 ){
             let title = titleElement.value;
@@ -107,9 +119,13 @@ saveBtn.addEventListener('click', ()=>{
             let ActiveProjectID = document.querySelector('.active').dataset.id;
 
 
-            applicationProjectsArr.find(project=>project.id === ActiveProjectID).addTodoItem(title, description,dueDate,priority);
+            let project = applicationProjectsArr.find(project=>project.id === ActiveProjectID);
+                project.addTodoItem(title, description,dueDate,priority);
             saveToLocalStroage();
             clearTodoFormInputFields();
+            console.log(project)
+            updateHeaderUI(project);
+            displayProjectsInUI();
         }
         else{
             alert("The following fields MUST be filled out \n -Title\n -Due Date\n -Priority");
