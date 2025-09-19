@@ -163,6 +163,82 @@ function updateHeaderWithProjectInfo(activeProject){
 }
 
 export function addTodoCard(project){
+    let todoCard = document.createElement('div');
+    todoCard.classList.add('TodoCard');
+
+    let checkbox = document.createElement('input');
+    checkbox.setAttribute("type", "checkbox");
+    checkbox.setAttribute("id", "completed");
+    checkbox.setAttribute("name", "completed");
+    // append to todoCard
+    todoCard.append(checkbox)
+
+    let detailContainer = document.createElement('div');
+    detailContainer.classList.add('todoDetailContainer')
+//     append to todoCard
+    todoCard.append(detailContainer);
+
+    let projectName = document.createElement('h5');
+    projectName.classList.add("todoName");
+    projectName.innerText = `${project.title}`;
+//     append to detailContainer
+    detailContainer.append(projectName);
+
+
+    let additionalContainer = document.createElement('div');
+    additionalContainer.classList.add('additionalDetailContainer');
+//     append to detailContainer
+    detailContainer.append(additionalContainer);
+
+
+    let piorityUI =document.createElement('div');
+    piorityUI.classList.add('priorityUI');
+    piorityUI.innerText = `Priority: ${project.priority.toLowerCase()}`;
+    // append to additonalContainer
+    additionalContainer.append(piorityUI);
+
+    let dueUI = document.createElement('div');
+    dueUI.classList.add('dueUI');
+    dueUI.innerText = `Due: ${project.dueDate}`;
+    // append to additonalContainer
+    additionalContainer.append(dueUI);
+
+    let noteUI = document.createElement('div');
+    noteUI.classList.add('noteUI');
+    noteUI.innerText = `${project.description}`;
+    // append to additonalContainer
+    additionalContainer.append(noteUI);
+
+
+    let actionContainer = document.createElement('div');
+    actionContainer.classList.add("todoActions");
+    //append to todoCard
+    todoCard.append(actionContainer)
+
+    let btnContainer1 = document.createElement('button');
+    btnContainer1.classList.add('edit');
+    //append to actionContainer
+    actionContainer.append(btnContainer1);
+
+    let editIcon = document.createElement('i');
+    editIcon.classList.add('fa-solid');
+    editIcon.classList.add('fa-pen-to-square');
+    //append to btnContainer1
+    btnContainer1.append(editIcon);
+
+    let btnContainer2 = document.createElement('button');
+    btnContainer2.classList.add('remove');
+    //append to actionContainer
+    actionContainer.append(btnContainer2);
+
+    let removeIcon = document.createElement('i');
+    removeIcon.classList.add('fa-solid');
+    removeIcon.classList.add('fa-trash');
+    //append to btnContainer2
+    btnContainer2.append(removeIcon);
+
+
+    todoCardContainer.append(todoCard);
 
 }
 
