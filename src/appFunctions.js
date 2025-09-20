@@ -9,8 +9,8 @@ export function createNewProject(){
 
     if(checkForValidInput(name))
     {
-        let project = new Project(name);
-        return project;
+        return new Project(name);
+
     }
 }
 
@@ -162,7 +162,7 @@ function updateHeaderWithProjectInfo(activeProject){
     }
 }
 
-export function addTodoCard(project){
+export function addTodoCard(todo){
     let todoCard = document.createElement('div');
     todoCard.classList.add('TodoCard');
 
@@ -180,7 +180,7 @@ export function addTodoCard(project){
 
     let projectName = document.createElement('h5');
     projectName.classList.add("todoName");
-    projectName.innerText = `${project.title}`;
+    projectName.innerText = `${todo.title}`;
 //     append to detailContainer
     detailContainer.append(projectName);
 
@@ -193,25 +193,28 @@ export function addTodoCard(project){
 
     let piorityUI =document.createElement('div');
     piorityUI.classList.add('priorityUI');
-    piorityUI.innerText = `Priority: ${project.priority.toLowerCase()}`;
+    piorityUI.innerText = `Priority: ${todo.priority.toLowerCase()}`;
     // append to additonalContainer
     additionalContainer.append(piorityUI);
 
     let dueUI = document.createElement('div');
     dueUI.classList.add('dueUI');
-    dueUI.innerText = `Due: ${project.dueDate}`;
+    dueUI.innerText = `Due: ${todo.dueDate}`;
     // append to additonalContainer
     additionalContainer.append(dueUI);
 
     let noteUI = document.createElement('div');
     noteUI.classList.add('noteUI');
-    noteUI.innerText = `${project.description}`;
+    noteUI.innerText = `${todo.description}`;
     // append to additonalContainer
     additionalContainer.append(noteUI);
 
 
     let actionContainer = document.createElement('div');
+    actionContainer.dataset.id = todo.id;
     actionContainer.classList.add("todoActions");
+
+
     //append to todoCard
     todoCard.append(actionContainer)
 
@@ -231,6 +234,7 @@ export function addTodoCard(project){
     //append to actionContainer
     actionContainer.append(btnContainer2);
 
+
     let removeIcon = document.createElement('i');
     removeIcon.classList.add('fa-solid');
     removeIcon.classList.add('fa-trash');
@@ -248,7 +252,6 @@ export function displayProjectTodoCards(project){
 
         project.arrTodos.forEach(todo => {
             addTodoCard(todo);
-            console.log("hello")
         })
 
     } else{
@@ -259,4 +262,17 @@ export function displayProjectTodoCards(project){
 export function updateHeaderUI(activeProject){
     updateHeaderWithProjectInfo(activeProject);
     displayProjectTodoCards(activeProject);
+}
+
+export function deleteTodoElement(todoID){
+    console.log(applicationProjectsArr)
+    let projectID = document.querySelector('.active');
+    let projObject = findProject(projectID);
+    let updatedProjObj = projObject.arrTodos = projObject.arrTodos.filter(todo.id !== todoID)
+    displayProjectsInUI(updatedProjObj);
+    updateHeaderUI(updatedProjObj);
+    console.log(applicationProjectsArr)
+    saveToLocalStroage();
+    console.log(applicationProjectsArr)
+
 }

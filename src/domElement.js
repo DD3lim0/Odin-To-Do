@@ -21,4 +21,5 @@ export let priorityElement = document.querySelector('#priority');
 export let projectHeaderName = document.querySelector('.headerProjectName');
 
 export let projectHeaderTodoCount = document.querySelector('.projectTodoCount')
-export let todoCardContainer = document.querySelector('.todoContainer');
+export let todoCardContainer = document.querySelector('.todoContainer')
+export let deleteTodoBtn = document.querySelector('.remove');

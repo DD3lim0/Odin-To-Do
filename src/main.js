@@ -10,7 +10,8 @@ import {
     titleElement,
     descriptionElement,
     dueDateElement,
-    priorityElement
+    priorityElement,
+    deleteTodoBtn
 } from "./domElement.js";
 import './style.css'
 import {
@@ -27,7 +28,8 @@ import {
     toggleOverlay,
     getProjectArrFromLocalStorage,
     clearTodoFormInputFields,
-    updateHeaderUI
+    updateHeaderUI,
+    deleteTodoElement
 } from "./appFunctions";
 import {Project} from "./project";
 
@@ -131,6 +133,12 @@ saveBtn.addEventListener('click', ()=>{
             alert("The following fields MUST be filled out \n -Title\n -Due Date\n -Priority");
         }
 });
+
+
+deleteTodoBtn.addEventListener('click',(e)=>{
+    let todoID = e.target.parentElement.dataset.id;
+    deleteTodoElement(todoID);
+})
 
 
 displayProjectsInUI();
