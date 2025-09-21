@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/3d26510c42.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="mainProject">
+    <section class="projectNavContainer">
+        <div class="logoContainer">
+            <div class="logoSymbol"></div>
+            <h3>Project Todos</h3>
+        </div>
+        <div class="todoFilterContainer">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="filter" name="filter" placeholder="Search todos in all projects...">
+        </div>
+        <div class="projectContainer">
+            <h5>PROJECTS</h5>
+            <div class="projectContent">
+
+            </div>
+        </div>
+
+        <div class="projectAction">
+            <h5>ACTIONS</h5>
+            <div class="projectBtnContainer">
+                <div class="twoBtnContainer">
+                    <button class="addProject"> + Project </button>
+                    <button class="rename"> Rename </button>
+                </div>
+                <div class="oneBtnContainer">
+                    <button class="delete"> Delete </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rightPortion">
+        <header>
+            <div class="todoStart">
+                <h3 class="headerProjectName">Project Name</h3>
+                <div class="countContainer">
+                    <span class="projectTodoLabel">todo <span class="projectTodoCount">0</span></span>
+                </div>
+            </div>
+
+            <select name="sortby" id="sortby">
+                <option value="Due Date (Ascending)">Due Date (Ascending)</option>
+                <option value="Due Date (Descending)">Due Date (Descending)</option>
+                <option value="Priority">Priority</option>
+            </select>
+
+            <select name="filterby" id="filterby">
+                <option value="All">All</option>
+                <option value="Not Completed">Not Completed</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <div>
+                <button class="addTodo"> + Todo </button>
+            </div>
+        </header>
+        <div class="todoContainer">
+<!--            <div class="TodoCard">-->
+<!--                <input type="checkbox" name="completed" id="completed">-->
+<!--                <div class="todoDetailContainer">-->
+<!--                    <h5 class="todoName">Name</h5>-->
+<!--                    <div class="additionalDetailContainer">-->
+<!--                        <div class="priorityUI">Priority: medium</div>-->
+<!--                        <div class="dueUI">Due: Sep 24, 2025</div>-->
+<!--                        <div class="noteUI">Note</div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="todoActions">-->
+<!--                    <button class="edit"><i class="fa-solid fa-pen-to-square"></i></button>-->
+<!--                    <button class="remove"><i class="fa-solid fa-trash"></i></button>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+    </section>
+</div>
+<div class="overlay">
+    <div class="overlayContainer">
+        <div>
+            <h4>Add Todo</h4>
+        </div>
+
+        <form action="" class="todoForm">
+            <label for="title">Title</label>
+            <br>
+            <input type="text" name="title" id="title" required placeholder="Example: Pay electric bill">
+            <br>
+            <label for="description">Description</label>
+            <br>
+            <textarea id="description" name="description" rows="5" cols="20" placeholder="Notes / Details"></textarea >
+            <br>
+            <div class="bottomFormSection">
+                <label for="dueDate">Due Date</label>
+                <br>
+                <input type="date" name="dueDate" id="dueDate" required>
+                <br>
+                <label for="priority">Priority</label>
+                <br>
+                <select name="priority" id="priority" required>
+                    <option value="Low"> Low </option>
+                    <option value="Medium" selected> Medium </option>
+                    <option value="High"> High </option>
+                </select>
+            </div>
+
+        </form>
+        <div class="buttonContainer">
+            <button class="cancel">Cancel</button>
+            <button class="save">Save</button>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

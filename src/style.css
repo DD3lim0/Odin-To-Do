@@ -1,0 +1,458 @@
+
+
+
+.projectNavContainer{
+    width: 18vw;
+    border-right: solid rgb(31,41,54) 1px;
+    height: 100vh;
+    font-family: Roboto, sans-serif;
+    padding-left: 15px;
+    background-color: rgb(17,23,38);
+
+}
+
+.projectNavContainer h3, p{
+    color: white;
+}
+
+body{
+    background-color: rgb(17,23,38);
+    font-family: Roboto, sans-serif;
+}
+
+.logoContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.logoSymbol{
+     width:40px;
+    height: 40px;
+    background-image: linear-gradient(45deg, blue, mediumpurple);
+    /*background-color: mediumpurple;*/
+    border-radius: 14px;
+}
+
+.todoFilterContainer{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    height: 15px;
+    width: 80%;
+    border-radius: 12px;
+    border: solid rgb(31,41,54) 2px;
+    padding: 10px;
+    color: rgb(136, 140, 148);
+    background-color: rgb(11,18,32);
+
+}
+.todoFilterContainer:hover, input:hover{
+    cursor: pointer;
+}
+
+
+
+#filter{
+    background-color: rgb(11,18,32);
+    color: white;
+    border: none;
+    padding: 5px;
+}
+
+h5{
+    color: rgb(149,163,183);
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.selectableProject{
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 80%;
+    border: solid transparent 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    transition: border-color .4s ;
+
+    border-radius: 12px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.selectableProject:hover{
+    cursor: pointer;
+    border: solid  rgb(31,41,54) 2px;
+}
+
+.start{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.selectableProject.active{
+    background-color: rgb(16, 27,48);
+    border: solid  rgb(31,41,54) 2px;
+}
+
+.colorIcon{
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: #f6a23e;
+}
+.projectName{
+    padding: none;
+    margin: none;
+}
+
+.projectContainer h4{
+    font-weight: normal;
+
+}
+
+.todoFilterContainer input:focus{
+    border: solid red 3px;
+    outline:none;
+}
+
+.projectBtnContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.projectBtnContainer button{
+    height: 45px;
+    border: solid rgb(31,41,54) 2px;
+    border-radius: 12px;
+    color: white;
+    background-color: rgb(11,18,32);
+}
+
+.projectBtnContainer button:hover{
+    cursor: pointer;
+}
+
+.addProject{
+    background-image: linear-gradient(45deg,rgb(55,114,225), rgb(40,84,189));
+    letter-spacing: 1px;
+    border: none;
+}
+
+.rename:hover, .delete:hover{
+    background-color: rgb(16, 27,48);
+}
+
+.projectBtnContainer div{
+    width: 80%;
+}
+
+.addProject , .rename{
+    width: 50%;
+}
+.twoBtnContainer {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+
+.delete{
+    width: 100%;
+}
+
+.end div{
+    color: rgb(149,163,183);
+}
+
+header{
+    width: 80vw;
+    height: 60px;
+    border-bottom: solid rgb(31,41,54) 2px;
+    display:  flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.todoStart{
+    display: flex;
+    color: white;
+    gap: 15px;
+    align-items: center;
+}
+.countContainer{
+    /*flex-direction: row;*/
+    font-size: 10px;
+    width: 40px;
+    height: 15px;
+    padding: 1px;
+    border: solid white 1px;
+    text-align:center;
+    border-radius: 9px;
+
+}
+
+.headerProjectName{
+    color: white;
+}
+
+
+select{
+    height: 40px;
+    width: 90px;
+    border: solid rgb(31,41,54) 2px;
+    padding: 5px;
+    border-radius: 12px;
+    color: white;
+    background-color: rgb(11,18,32);
+}
+
+.addTodo{
+    height: 35px;
+    width: 60px;
+    background-image: linear-gradient(45deg,rgb(55,114,225), rgb(40,84,189));
+    letter-spacing: 1px;
+    border: none;
+    color: white;
+    border-radius: 6px;
+}
+
+.addTodo:hover{
+    cursor: pointer;
+}
+
+.mainProject{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.overlay{
+    display: none;
+    font-family: Roboto, sans-serif;
+}
+
+.overlay.open{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(11,18,32,.6);
+}
+
+label{
+    color: rgba(149,163,183);
+}
+
+.todoForm{
+    display: flex;
+    width: 75%;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 15px;
+    gap: 5px;
+    padding-left: 25px;
+    height: 70%;
+}
+
+.todoForm input, .todoForm textarea{
+    padding-left: 15px;
+}
+
+.todoStart{
+   width: 200px;
+}
+
+.rightPortion{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    text-align: center;
+}
+.todoContainer{
+    color: rgb(149,163,183);
+}
+
+.overlayContainer{
+    width: 500px;
+    height: 450px;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    background-color: rgb(14, 25, 40);
+    border-radius: 20px;
+    border: solid rgb(31,41,54) 1px;
+
+}
+
+#title, #description, #dueDate{
+    background-color: rgb(11,18,32);
+    border: solid rgb(31,41,54) 1px;
+    color: white;
+    border-radius: 10px;
+}
+
+#title,#dueDate{
+    height: 35px;
+}
+
+.bottomFormSection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.overlayContainer h4 {
+    color: white;
+    margin-bottom: 0;
+}
+
+.overlayContainer div:first-child{
+    border-bottom: solid rgb(31,41,54) 1px;
+    padding-left: 25px;
+    padding-bottom: 10px;
+}
+
+.buttonContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 20px;
+    padding-left: 25px;
+    border-top: solid rgb(31,41,54) 1px;
+
+}
+
+.save, .cancel {
+    width: 60px;
+    height: 30px;
+    color: white;
+    border-radius: 5px;
+    border: solid white 1px;
+
+}
+
+.save, .cancel{
+    cursor: pointer;
+}
+.cancel{
+    background-color: rgb(11,18,32);
+
+}
+.save{
+    background-image: linear-gradient(45deg,rgb(55,114,225), rgb(40,84,189));
+}
+
+
+#dueDate{
+    margin-right: 40px;
+}
+
+.TodoCard{
+    height: 60px;
+    width: 95%;
+    border: solid rgb(31,41,54) 1px;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.additionalDetailContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.todoName{
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+
+#completed{
+    width: 20px;
+}
+
+
+.todoDetailContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 8px;
+    gap:10px;
+}
+
+
+.additionalDetailContainer{
+    font-size: 12px;
+    display: flex;
+    gap: 20px;
+}
+
+.priorityUI,.dueUI, .noteUI{
+    padding: 5px;
+    border: solid rgb(31,41,54) 1px;
+    text-align:center;
+    border-radius: 12px;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.priorityUI{
+    color: rgb(253,157,42);
+    border: solid rgb(74,54,23) 1px;
+}
+
+.todoActions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.todoActions button{
+    border: solid rgb(31,41,54) 2px;
+    color: rgb(31,41,54);
+    background-color: transparent;
+    height: 40px;
+    width: 50px;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+
+.remove:hover, .edit:hover {
+    cursor: pointer;
+}
+.remove:hover{
+    border:solid #e54d4d 1px;
+    color: #E54D4DFF;
+}
+
+.edit:hover{
+    border:solid rgb(55,114,225) 1px;
+    color: rgb(55,114,225);
+}
