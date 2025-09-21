@@ -265,14 +265,15 @@ export function updateHeaderUI(activeProject){
 }
 
 export function deleteTodoElement(todoID){
-    console.log(applicationProjectsArr)
-    let projectID = document.querySelector('.active');
-    let projObject = findProject(projectID);
-    let updatedProjObj = projObject.arrTodos = projObject.arrTodos.filter(todo.id !== todoID)
-    displayProjectsInUI(updatedProjObj);
-    updateHeaderUI(updatedProjObj);
-    console.log(applicationProjectsArr)
+
+    let projectID = document.querySelector('.active').dataset.id;
+    let projObject = applicationProjectsArr.find(project=> project.id === projectID);
+
+     projObject.arrTodos = projObject.arrTodos.filter(todo=> todo.id !== todoID);
+
     saveToLocalStroage();
-    console.log(applicationProjectsArr)
+    updateHeaderUI(projObject);
+    displayProjectsInUI(projObject);
+
 
 }

@@ -11,7 +11,7 @@ import {
     descriptionElement,
     dueDateElement,
     priorityElement,
-    deleteTodoBtn
+    deleteTodoBtn, todoCardContainer
 } from "./domElement.js";
 import './style.css'
 import {
@@ -56,11 +56,8 @@ projectContainer.addEventListener('click', (e)=>{
 
          e.target.classList.add('active');
          let selectedElement = document.querySelector('.active');
-         console.log(selectedElement);
         let id = selectedElement.dataset.id;
-        console.log(id);
         let project = findProject(id);
-        console.log(project);
         updateHeaderUI(project);
     }
 
@@ -125,7 +122,6 @@ saveBtn.addEventListener('click', ()=>{
                 project.addTodoItem(title, description,dueDate,priority);
             saveToLocalStroage();
             clearTodoFormInputFields();
-            console.log(project)
             updateHeaderUI(project);
             displayProjectsInUI();
         }
@@ -134,10 +130,19 @@ saveBtn.addEventListener('click', ()=>{
         }
 });
 
+todoCardContainer.addEventListener('click', (e)=>{
+    let id;
 
-deleteTodoBtn.addEventListener('click',(e)=>{
-    let todoID = e.target.parentElement.dataset.id;
-    deleteTodoElement(todoID);
+    if(e.target.classList.contains('remove')){
+        id = e.target.parentElement.dataset.id;
+    }
+
+    if(e.target.parentElement.classList.contains('remove')){
+        id = e.target.parentElement.parentElement.dataset.id;
+    }
+
+    deleteTodoElement(id);
+
 })
 
 
