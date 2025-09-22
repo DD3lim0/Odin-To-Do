@@ -275,5 +275,6 @@ export function deleteTodoElement(todoID){
     updateHeaderUI(projObject);
     displayProjectsInUI(projObject);
 
-
 }
+
+

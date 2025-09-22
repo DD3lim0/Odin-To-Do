@@ -11,7 +11,9 @@ import {
     descriptionElement,
     dueDateElement,
     priorityElement,
-    deleteTodoBtn, todoCardContainer
+    deleteTodoBtn,
+    todoCardContainer,
+
 } from "./domElement.js";
 import './style.css'
 import {
@@ -35,6 +37,7 @@ import {Project} from "./project";
 
 
 export let applicationProjectsArr = getProjectArrFromLocalStorage() || [ new Project("Default")] ;
+
 
 
 addProjectBtn.addEventListener('click',() => {
@@ -80,10 +83,19 @@ renameBtn.addEventListener('click',()=>{
 deleteProjetBtn.addEventListener('click', ()=>{
 
     if(document.querySelector('.active') &&  applicationProjectsArr.length > 1){
+
+
         let id = document.querySelector('.active').dataset.id
-        applicationProjectsArr = applicationProjectsArr.filter(el =>el.id !== id);
-        saveToLocalStroage();
-        displayProjectsInUI();
+
+        if(applicationProjectsArr.find(project => project.id === id).arrTodos.length > 1 && confirm(`Delete project "${applicationProjectsArr.find(project => project.id === id).name}" and all its todos?`)){
+            applicationProjectsArr = applicationProjectsArr.filter(el =>el.id !== id);
+            saveToLocalStroage();
+            displayProjectsInUI();
+            id = document.querySelector('.active').dataset.id;
+            let project = applicationProjectsArr.find(project => project.id === id)
+            updateHeaderUI(project);
+
+        }
     }
     else{
 
@@ -124,6 +136,7 @@ saveBtn.addEventListener('click', ()=>{
             clearTodoFormInputFields();
             updateHeaderUI(project);
             displayProjectsInUI();
+            toggleOverlay();
         }
         else{
             alert("The following fields MUST be filled out \n -Title\n -Due Date\n -Priority");
@@ -145,8 +158,16 @@ todoCardContainer.addEventListener('click', (e)=>{
 
 })
 
+function loadApp(){
+let id = document.querySelector('.active').dataset.id;
+let project = applicationProjectsArr.find(project => project.id === id);
+    updateHeaderUI(project);
+}
+
 
 displayProjectsInUI();
+loadApp();
+
 
 
 
