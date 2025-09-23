@@ -12,7 +12,7 @@ import {
     dueDateElement,
     priorityElement,
     deleteTodoBtn,
-    todoCardContainer,
+    todoCardContainer, sortByFilter,
 
 } from "./domElement.js";
 import './style.css'
@@ -31,7 +31,7 @@ import {
     getProjectArrFromLocalStorage,
     clearTodoFormInputFields,
     updateHeaderUI,
-    deleteTodoElement
+    deleteTodoElement, addTodoCard
 } from "./appFunctions";
 import {Project} from "./project";
 
@@ -60,7 +60,7 @@ projectContainer.addEventListener('click', (e)=>{
          e.target.classList.add('active');
          let selectedElement = document.querySelector('.active');
         let id = selectedElement.dataset.id;
-        let project = findProject(id);
+        let project = applicationProjectsArr.find(proj => proj.id === id);
         updateHeaderUI(project);
     }
 
@@ -69,13 +69,14 @@ projectContainer.addEventListener('click', (e)=>{
 
 renameBtn.addEventListener('click',()=>{
     let projectID = getIDOfActiveProject();
+    console.log(projectID);
     let newName  = promptToRenameProject(findProject(projectID));
 
-    applicationProjectsArr.find(el => el.id = projectID).name = newName;
+    applicationProjectsArr.find(el => el.id === projectID).name = newName;
 
     saveToLocalStroage();
-
     displayProjectsInUI();
+    updateHeaderUI();
 
 });
 
@@ -95,6 +96,13 @@ deleteProjetBtn.addEventListener('click', ()=>{
             let project = applicationProjectsArr.find(project => project.id === id)
             updateHeaderUI(project);
 
+        }else{
+            applicationProjectsArr = applicationProjectsArr.filter(el =>el.id !== id);
+            saveToLocalStroage();
+            displayProjectsInUI();
+            id = document.querySelector('.active').dataset.id;
+            let project = applicationProjectsArr.find(project => project.id === id)
+            updateHeaderUI(project);
         }
     }
     else{
@@ -163,6 +171,41 @@ let id = document.querySelector('.active').dataset.id;
 let project = applicationProjectsArr.find(project => project.id === id);
     updateHeaderUI(project);
 }
+
+
+// sortByFilter.addEventListener('change', ()=>{
+//     let id = document.querySelector('.active').dataset.id;
+//     let project = applicationProjectsArr.find(project => project.id === id);
+//     let userInput = sortByFilter.value;
+//     let sortedTodos;
+//
+//     switch (userInput){
+//
+//         case "Due Date (Ascending)":
+//            sortedTodos = project.arrTodos.sort((a,b) => {a.title - b.title})
+//             break;
+//         case "Due Date (Descending)":
+//             sortedTodos = project.arrTodos.sort((a,b)=>{b.title - a.title})
+//             break;
+//
+//         case "Priority":
+//             sortedTodos = project.arrTodos.sort((a,b)=>{a.priority - b.priority})
+//             break;
+//     }
+
+// if(sortedTodos.length > 0){
+//     todoCardContainer.innerText = "";
+//
+//     sortedTodos.forEach(todo => {
+//         addTodoCard(todo);
+//     })
+//
+// } else{
+//     todoCardContainer.innerText = "No todos in this project yet."
+// }
+// updateHeaderUI(project);
+// console.log(sortedTodos);
+// });
 
 
 displayProjectsInUI();
