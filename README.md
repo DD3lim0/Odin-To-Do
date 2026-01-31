@@ -10,7 +10,7 @@ Technology Stack
 Getting Started
 
 
-<a href="https://dd3lim0.github.io/Odin-To-Do" 🚀 Live Demo </a>
+<a href="https://dd3lim0.github.io/Odin-To-Do"> 🚀 Live Demo </a>
 
 Visit the live application or clone the repository
 Create your first project using the project management interface
